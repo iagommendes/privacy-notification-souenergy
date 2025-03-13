@@ -1,16 +1,17 @@
-# Vue Notification App
+# Privacy Notification - SouEnergy 🌞
 
 ## Descrição Geral
 
-Este projeto é uma aplicação web desenvolvida com Vue.js e Vite, que simula um fluxo de login e exibe um modal de política de privacidade para o usuário aceitar. A aplicação utiliza o JSON Server para simular um backend, permitindo a prototipagem rápida e fácil de funcionalidades.
+Este projeto é uma aplicação web desenvolvida para a SouEnergy, uma empresa de energia solar. A aplicação permite que os usuários façam login, visualizem um dashboard com informações relevantes sobre seus sistemas de energia solar, e aceitem uma política de privacidade através de um modal. O backend é simulado usando JSON Server para prototipagem rápida.
 
 ### Funcionalidades Principais
 
 - **Login Simulado**: Permite que usuários façam login usando credenciais fictícias armazenadas no JSON Server.
 - **Modal de Política de Privacidade**: Exibe um modal após o login, solicitando que o usuário aceite a política de privacidade.
+- **Dashboard de Energia Solar**: Exibe informações sobre monitoramento de painéis, relatórios de economia e suporte técnico.
 - **Painel Administrativo**: Permite visualizar quais usuários aceitaram a política de privacidade.
 
-## Instalação e Configuração
+## 🚀 Instalação e Configuração
 
 ### Pré-requisitos
 
@@ -20,8 +21,8 @@ Este projeto é uma aplicação web desenvolvida com Vue.js e Vite, que simula u
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/seu-usuario/vue-notification-app.git
-   cd vue-notification-app
+   git clone https://github.com/iagommendes/privacy-notification-souenergy.git
+   cd privacy-notification-souenergy
    ```
 
 2. **Instale as dependências**:
@@ -29,30 +30,41 @@ Este projeto é uma aplicação web desenvolvida com Vue.js e Vite, que simula u
    npm install
    ```
 
-3. **Inicie o JSON Server**:
-   - Crie um arquivo `db.json` na raiz do projeto com o seguinte conteúdo:
-     ```json
-     {
-       "users": [
-         { "id": 1, "name": "User1", "password": "password123", "acceptedPolicy": false },
-         { "id": 2, "name": "User2", "password": "password456", "acceptedPolicy": false }
-       ]
-     }
-     ```
+3. **Crie o arquivo `db.json`** na raiz do projeto com o seguinte conteúdo:
+   ```json
+   {
+     "users": [
+       {
+         "id": "1",
+         "name": "User1",
+         "password": "password123",
+         "acceptedPolicy": false
+       },
+       {
+         "id": "2",
+         "name": "User2",
+         "password": "password456",
+         "acceptedPolicy": false
+       }
+     ]
+   }
+   ```
+
+4. **Inicie o JSON Server**:
    - Execute o JSON Server:
      ```bash
      json-server --watch db.json --port 3000
      ```
 
-4. **Inicie o servidor de desenvolvimento do Vite**:
+5. **Inicie o servidor de desenvolvimento do Vite**:
    ```bash
    npm run dev
    ```
 
-5. **Acesse a aplicação**:
-   - Abra o navegador e vá para `http://localhost:5173`.
+6. **Acesse a aplicação**:
+   - Abra o navegador e vá para `http://localhost:5173`. ou rota informada pelo Vite.
 
-## Testes
+## 🧪 Exemplos de Testes
 
 ### Teste de Login
 
@@ -72,12 +84,12 @@ Este projeto é uma aplicação web desenvolvida com Vue.js e Vite, que simula u
 1. Navegue até o painel administrativo.
 2. Verifique se os usuários que aceitaram a política são listados corretamente.
 
-## Estrutura de Código e Arquitetura
+## 🏗️ Estrutura de Código e Arquitetura
 
 ### Estrutura de Pastas
 
 ```
-vue-notification-app/
+privacy-notification-souenergy/
 ├── public/
 ├── src/
 │   ├── assets/
@@ -111,24 +123,7 @@ vue-notification-app/
 - **Vite**: Ferramenta de construção rápida para desenvolvimento de aplicações Vue.js.
 - **JSON Server**: Simula um backend RESTful para prototipagem rápida.
 
-## Observações
+## 📌 Observações
 
 - Este projeto é uma demonstração básica e não deve ser usado em produção sem melhorias de segurança, como autenticação segura e gerenciamento de sessões.
 - O JSON Server é usado apenas para fins de prototipagem e não substitui um backend real.
-
-<div align="center">
-  Feito com ❤️ por [Iago Maciel]
-</div>
-
-## 🌈 Extras
-
-### Captura de Tela
-
-![Login Screen](screenshot-login.png)
-![Privacy Modal](screenshot-privacy-modal.png)
-
-### Badges
-
-![Build Status](https://img.shields.io/github/workflow/status/seu-usuario/privacy-notification-app/CI)
-![License](https://img.shields.io/github/license/seu-usuario/privacy-notification-app)
-![Version](https://img.shields.io/github/package-json/v/seu-usuario/privacy-notification-app)
