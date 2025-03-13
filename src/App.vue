@@ -1,32 +1,50 @@
-<script setup>
-
-</script>
-
 <template>
-  <header>
-    <div class="wrapper">
-      <h1>SouEnergy</h1>
-    </div>
-  </header>
+  <div id="app">
+    <h1>Bem-vindo à Plataforma</h1>
+    <button @click="login">Login</button>
+    <ModalComponent v-if="showModal" :showModal="showModal" @accept="handleAccept" />
+    <AdminView />
+  </div>
 </template>
 
-<style scoped>
-  header {
-    background-color: #f20808;
-    color: white;
-    padding: 10px 0;
-  }
+<script>
+import ModalComponent from './components/ModalComponent.vue';
+import AdminView from './components/AdminView.vue';
 
-  .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 800px;
-    margin: 0 auto;
+export default {
+  components: {
+    ModalComponent,
+    AdminView
+  },
+  data() {
+    return {
+      showModal: false,
+      currentUser: null
+    };
+  },
+  methods: {
+    login() {
+      // Simular login do usuário
+      fetch('http://localhost:3000/users/1')
+        .then(response => response.json())
+        .then(user => {
+          this.currentUser = user;
+          if (!user.acceptedPolicy) {
+            this.showModal = true;
+          }
+        });
+    },
+    handleAccept() {
+      this.showModal = false;
+      this.currentUser.acceptedPolicy = true;
+      fetch(`http://localhost:3000/users/${this.currentUser.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ acceptedPolicy: true })
+      });
+    }
   }
-
-  .logo {
-    width: 50px;
-    height: 50px;
-  }
-</style>
+}
+</script>

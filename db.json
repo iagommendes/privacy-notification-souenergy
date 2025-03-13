@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "User1",
+      "acceptedPolicy": false
+    },
+    {
+      "id": "2",
+      "name": "User2",
+      "acceptedPolicy": false
+    }
+  ]
+}
