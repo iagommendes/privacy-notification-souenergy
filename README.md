@@ -1,133 +1,120 @@
-# Privacy Notification App 🔐📋
+# Vue Notification App
 
-## Descrição do Projeto
+## Descrição Geral
 
-O Privacy Notification App é uma aplicação web desenvolvida para gerenciar e notificar usuários sobre atualizações na política de privacidade de uma plataforma. O sistema permite:
+Este projeto é uma aplicação web desenvolvida com Vue.js e Vite, que simula um fluxo de login e exibe um modal de política de privacidade para o usuário aceitar. A aplicação utiliza o JSON Server para simular um backend, permitindo a prototipagem rápida e fácil de funcionalidades.
 
-- Autenticação de usuários
-- Exibição de modal de notificação de privacidade
-- Controle de aceitação de termos
-- Painel administrativo para visualização de status de privacidade
+### Funcionalidades Principais
 
-## 🌟 Funcionalidades Principais
+- **Login Simulado**: Permite que usuários façam login usando credenciais fictícias armazenadas no JSON Server.
+- **Modal de Política de Privacidade**: Exibe um modal após o login, solicitando que o usuário aceite a política de privacidade.
+- **Painel Administrativo**: Permite visualizar quais usuários aceitaram a política de privacidade.
 
-- Login de usuários
-- Modal de notificação de política de privacidade
-- Controle de aceitação de termos
-- Grid de usuários com status de privacidade
-- Autenticação e autorização
+## Instalação e Configuração
 
-## 🛠 Tecnologias Utilizadas
+### Pré-requisitos
 
-- Vue.js
-- Vuex (Gerenciamento de Estado)
-- Vue Router
-- Axios
-- JSON Server (Mock Backend)
-- Vuelidate (Validações)
+- Node.js e npm instalados em sua máquina. [Download Node.js](https://nodejs.org/)
 
-## 📋 Pré-requisitos
+### Passos para Instalação
 
-- Node.js (v14 ou superior)
-- npm (v6 ou superior)
+1. **Clone o repositório**:
+   ```bash
+   git clone https://github.com/seu-usuario/vue-notification-app.git
+   cd vue-notification-app
+   ```
 
-## 🚀 Instalação
+2. **Instale as dependências**:
+   ```bash
+   npm install
+   ```
 
-### Clonar o Repositório
-```bash
-git clone https://github.com/seu-usuario/privacy-notification-app.git
-cd privacy-notification-app
+3. **Inicie o JSON Server**:
+   - Crie um arquivo `db.json` na raiz do projeto com o seguinte conteúdo:
+     ```json
+     {
+       "users": [
+         { "id": 1, "name": "User1", "password": "password123", "acceptedPolicy": false },
+         { "id": 2, "name": "User2", "password": "password456", "acceptedPolicy": false }
+       ]
+     }
+     ```
+   - Execute o JSON Server:
+     ```bash
+     json-server --watch db.json --port 3000
+     ```
+
+4. **Inicie o servidor de desenvolvimento do Vite**:
+   ```bash
+   npm run dev
+   ```
+
+5. **Acesse a aplicação**:
+   - Abra o navegador e vá para `http://localhost:5173`.
+
+## Testes
+
+### Teste de Login
+
+1. Acesse a aplicação no navegador.
+2. Use as credenciais fictícias para fazer login:
+   - **Usuário**: User1
+   - **Senha**: password123
+3. Verifique se o modal de política de privacidade é exibido após o login.
+
+### Teste de Aceitação da Política
+
+1. Após o login, clique no botão "Aceitar" no modal.
+2. Verifique se o modal desaparece e a aceitação é registrada no JSON Server.
+
+### Teste do Painel Administrativo
+
+1. Navegue até o painel administrativo.
+2. Verifique se os usuários que aceitaram a política são listados corretamente.
+
+## Estrutura de Código e Arquitetura
+
+### Estrutura de Pastas
+
 ```
-
-### Instalar Dependências
-```bash
-npm install
-```
-
-## 🔧 Configuração
-
-### Iniciar Mock Backend
-```bash
-# Em um terminal
-npm run start-backend
-```
-
-### Iniciar Aplicação Vue
-```bash
-# Em outro terminal
-npm run serve
-```
-
-## 🔐 Usuários de Teste
-
-| Email | Senha | Papel |
-|-------|-------|-------|
-| joao@example.com | senha123 | Admin |
-| maria@example.com | senha456 | Usuário |
-| carlos@example.com | senha789 | Usuário |
-
-## 📦 Estrutura do Projeto
-
-```
-privacy-notification-app/
-│
-├── mock-backend/       # Dados mockados
+vue-notification-app/
+├── public/
 ├── src/
-│   ├── assets/         # Recursos estáticos
-│   ├── components/     # Componentes Vue
-│   ├── views/          # Páginas/Telas
-│   ├── store/          # Gerenciamento de estado
-│   ├── services/       # Serviços de API
-│   └── router/         # Configurações de rota
-└── scripts/            # Scripts auxiliares
+│   ├── assets/
+│   ├── components/
+│   ├── views/
+│   ├── App.vue
+│   ├── main.js
+│   └── router.js
+├── db.json
+├── .gitignore
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
 ```
 
-## 🧪 Testes
+### Descrição
 
-### Executar Testes
-```bash
-npm run test
-```
+- **public/**: Contém arquivos estáticos.
+- **src/**: Diretório principal do código-fonte.
+  - **assets/**: Armazena imagens e estilos globais.
+  - **components/**: Contém componentes Vue reutilizáveis.
+  - **views/**: Contém as views principais da aplicação (Login, Dashboard, Admin).
+  - **App.vue**: Componente raiz da aplicação.
+  - **main.js**: Ponto de entrada da aplicação.
+  - **router.js**: Configuração de rotas usando Vue Router.
 
-## 🚢 Deploy
+### Arquitetura
 
-O projeto está configurado com GitHub Actions para:
-- Instalação de dependências
-- Execução de testes
-- Build da aplicação
+- **Vue.js**: Framework JavaScript progressivo para construir interfaces de usuário.
+- **Vite**: Ferramenta de construção rápida para desenvolvimento de aplicações Vue.js.
+- **JSON Server**: Simula um backend RESTful para prototipagem rápida.
 
-## 🤝 Contribuição
+## Observações
 
-1. Faça um fork do projeto
-2. Crie sua feature branch (`git checkout -b feature/nova-funcionalidade`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/nova-funcionalidade`)
-5. Abra um Pull Request
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 🐛 Problemas Conhecidos
-
-- Autenticação é apenas mock
-- Sem persistência real de dados
-- Necessidade de implementar testes mais robustos
-
-## 🔮 Próximos Passos
-
-- [ ] Implementar autenticação real
-- [ ] Adicionar mais testes unitários
-- [ ] Criar design responsivo
-- [ ] Integração com backend real
-
-## 📞 Contato
-
-Iago Mendes - iagommendes@gmail.com
-
-Link do Projeto: [https://github.com/seu-usuario/privacy-notification-app](https://github.com/seu-usuario/privacy-notification-app)
-
----
+- Este projeto é uma demonstração básica e não deve ser usado em produção sem melhorias de segurança, como autenticação segura e gerenciamento de sessões.
+- O JSON Server é usado apenas para fins de prototipagem e não substitui um backend real.
 
 <div align="center">
   Feito com ❤️ por [Iago Maciel]
